@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Basic Chat Application</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body 
+	  { 
+		font: 18pxpx arial, sans-serif;
+		font-color:blue;
+	  }
+      #ChatWindow { list-style-type: none; margin: 0; padding: 0; }
+      #ChatWindow li { padding: 5px 10px; }
+    </style>
+  </head> 
+  <body>
+  
+	
+	<div style="height:400px; width:50%;border:solid 3px blue;margin-left:25%;margin-right:25%;background-color:#F0FFFF;">
+		<ul id="ChatWindow" style="width:100%;"></ul>
+	</div>
+	<p style="text-align:center;">Welcome to Chat Room!!!</p>
+	<input id="userName" style="width:150px;height:30px; margin-left:44%;padding-left:-125px;text-align:center;background-color:#F8F8FF;font:bold;" readonly="true"/>
+    <form action="" style="background: #000; padding: 3px; position: fixed; bottom: 0; width: 50%;margin-left:25%;margin-right:25%;">	 
+			<input id="inputText" style="border: 0; padding: 10px; width: 90%; margin-right: .5%;" placeholder="Type your message here" autocomplete="off"/>
+			<button style="width: 8%; background-color:blue; border: none; padding: 10px;">Send</button>	 
+    </form>
+	
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+	  var userName = prompt("Enter your name:");
+	  if(userName)
+	  {
+		$("#userName").val(userName);
+	  }
+	  else
+	  {
+		$("#userName").val("Anonymous");
+	  }
+	  
+	  //$(document).ready(prompt("");)
+      $('form').submit(function(){
+        socket.emit('chat message', {name:$("#userName").val(),message:$('#inputText').val()});
+        $('#inputText').val('');
+		$('#inputText').focus();
+        return false;
+      });
+      socket.on('chat message', function(incomingMsg){
+        $('#ChatWindow').append($('<li>').text(incomingMsg.name + ":" +" " + incomingMsg.message));
+      });
+	  
+    </script>
+  </body>
+</html>
