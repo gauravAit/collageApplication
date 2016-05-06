@@ -1,0 +1,21 @@
+{
+  "name": "sachin",
+  "version": "1.0.0",
+  "description": "careerStats",
+  "main": "Myserver.js",
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://3386Gaurav@bitbucket.org/3386Gaurav/simple-chat-app..git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/3386Gaurav/simple-chat-app.#readme"
+}

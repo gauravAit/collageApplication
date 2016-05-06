@@ -1,5 +1,5 @@
 Gaurav Saraswat
 
-//This Simple application has used: 
-//nodejs 5.0 express framework
-//socket.io 1.3.7
+//This Simple MEAN stack application has used:
+//after downloading cloning the code.run npm install to make sure you have all the dependencies in your system.
+//To run,get inside project directory simple-app and run node Myserver.js from console.
